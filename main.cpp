@@ -3,6 +3,9 @@
 #include <cctype>
 using namespace std;
 
+void help(){
+    cout<<"There are three modes in which you can use this application:\n# Mode 1 (Winter-Semester Internals Calculation):\nEnter marks scored in internals for current sem\nAs you finish input for each subject , a prediction will show for grade of current subject as well as the marks scored (outt of a possible 100).\nAfter typing the input for all the subjects , you will see the predicted gpa for the semester\nYou will be given an option as to whether you wish to calculate your new CGPA after adding the that has been predicted\nIf you wish to know your modified CGPA after the new additions , simply click on 1 and enter your past CGPA(up until your previous semester) as well as the number of credits your have finished so far.\nYou will now be able to see your modified CGPA.\n\n# Mode 2 (Calculate GPA for a semester):\n\nEnter the course credits followed by your predicted grade for the course\nReturns the GPA for the semester after you finish all the inputs.\nYou will be given an option as to whether you wish to calculate your new CGPA after adding the that has been predicted\nIf you wish to know your modified CGPA after the new additions , simply click on 1 and enter your past CGPA(up until your previous semester) as well as the number of credits your have finished so far.\nYou will now be able to see your modified CGPA.\n# Mode 3 (Calculate New CGPA):\n\nThis mode assumes that you have already calculated the GPA you are likely to receive in the current semester.\nEnter the number of credits finished , your current CGPA (Up until last semester) , number of credits taken this semester as well as your predicted cgpa for this semester.\nYou will see your modified CGPA.\n\n";
+}
 void calculate_cgpa()
 {
     int credits_so_far, current_credits;
@@ -370,10 +373,10 @@ void first_option()
             gpa += (calculate(10) * credits);
             break;
         case 11:
-            calculate(11);
+            gpa += (calculate(11) * credits);
             break;
         case 12:
-            calculate(12);
+            gpa += (calculate(12) * credits);
             break;
         default:
             cout << "Enter a valid option: " << endl;
@@ -392,11 +395,11 @@ void first_option()
 
 int main()
 {
-    cout << "Created By Robin Thomas From VIT Chennai" << endl;
-    cout << "Grades shown here are rough estimates only. Final grades will differ based on class average" << endl;
+    cout << "Created By Robin Thomas From VIT Chennai\n";
+    cout << "Grades shown here are rough estimates only. Final grades will differ based on class average\n\n";
     int option;
 choice:
-    cout << "1) Predict Grades for Winter Semester 2019-2020 based on Internal Marks scored\n2) Calculate GPA for current semester\n3) Calculate new CGPA: \n";
+    cout << "1) Predict Grades for Winter Semester 2019-2020 based on Internal Marks scored\n2) Calculate GPA for current semester\n3) Calculate new CGPA: \n4) Need Help?\n";
     cin >> option;
     switch (option)
     {
@@ -409,8 +412,11 @@ choice:
     case 3:
         calculate_cgpa();
         break;
+    case 4:
+        help();
+        goto choice;
     default:
-        cout << "Check Input . Please try again.";
+        cout << "Check Input . Please try again.\n";
         goto choice;
     }
     return 0;
