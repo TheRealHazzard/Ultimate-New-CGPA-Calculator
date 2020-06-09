@@ -1,7 +1,7 @@
 # Hosted at:
 https://vitcgpacalculator.therealhazzard.repl.run
 
-# There are three modes in which you can use this:
+# There are three modes in which you can use this application:
 
 Mode 1 (Winter-Semester Internals Calculation):
 - Enter marks scored in internals for current sem
