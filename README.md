@@ -1,3 +1,6 @@
+Hosted at:
+https://vitcgpacalculator.therealhazzard.repl.run
+
 There are three modes in which you can use this:
 
 Mode 1 (Winter-Semester Internals Calculation):
