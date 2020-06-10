@@ -136,7 +136,7 @@ int predict_grade(int score)
     else
     {
 
-        cout << "\nYou're the reason your class average is so high. S grade on the charts . But don't quote me on this , stranger things have happend before. *cough* *French* *cough* *cough*\n";
+        cout << "\nYou're the reason your class average is so high. S grade on the charts . But don't quote me on this , stranger things have happened before. *cough* *French* *cough* *cough*\n";
         return 10;
     }
 }
@@ -182,7 +182,7 @@ int predict_grade_absolute(int score)
 }
 int calculate(int option)
 {
-    float DA1, DA2, DA3, CAT1, CAT2, ADD, sum, final_sum, quiz1, quiz2, pat1, pat2, pat3, pat4;
+    float DA1, DA2, DA3, CAT1, CAT2, ADD, sum, final_sum, quiz1, quiz2, pat1, pat2, pat3, pat4, bat;
     float lab_internals, proj_internals;
     if (option == 4)
     {
@@ -241,7 +241,12 @@ int calculate(int option)
         cin >> CAT1;
         cout << "Enter CAT2 Marks weightage (Out of 14): ";
         cin >> CAT2;
+        cout << "Enter marks scored in BAT (Out of 10): ";
+        cin >> bat;
         final_sum = ((pat1 + pat2 + pat3 + pat4 + CAT1 + CAT2) / 60) * 100;
+        final_sum+=bat;
+        if (final_sum>100)
+        final_sum=100;
         cout << "Final Score for this subject out of 100 is " << final_sum;
         return predict_grade_absolute(final_sum);
     }
@@ -330,13 +335,13 @@ void first_option()
 {
     int number, option,choice,temp;
     int credits=0;
-    float gpa;
+    float gpa=0;
     cout << "Enter number of courses taken this semester: ";
     cin >> number;
     for (int i = 1; i <= number; i++)
     {
     choice:
-        cout << "\nEnter the type of course for course " << i << ":\n\n1) Theory Only (any no of credits) \n2) Theory + Lab (3 + 1 = 4 credits) \n3) Theory + Project (3 + 1 = 4 credits) \n4) TARP \n5) Theory + Lab + Project (2 + 1 + 1 = 4 credits)\n6) Soft Skills (1 credit)\n7) Theory + Project (1 + 1 = 2 credits)\n8) IIP (PHY1901) (1 credit)\n9) IIP (PHY1999) (2 credits)\n10) Theory + Project (2 + 1 = 3 Credits) \n11) Theory + Lab (2 + 1 = 3 Credits)\n12) OOPS\n";
+        cout << "\nEnter the type of course for course " << i << ":\n\n1) Theory Only (any no of credits) \n2) Theory + Lab (3 + 1 = 4 credits) \n3) Theory + Project (3 + 1 = 4 credits) \n4) TARP \n5) Theory + Lab + Project (2 + 1 + 1 = 4 credits)\n6) Soft Skills (1 credit)\n7) Theory + Project (1 + 1 = 2 credits)\n8) IIP (PHY1901) (1 credit)\n9) IIP (PHY1999) (2 credits)\n10) Theory + Project (2 + 1 = 3 credits) \n11) Theory + Lab (2 + 1 = 3 credits)\n12) OOPS (3 credits)\n";
         cout << endl;
         cin >> option;
         switch (option)
