@@ -3,8 +3,9 @@
 #include <cctype>
 using namespace std;
 
-void help(){
-    cout<<"There are three modes in which you can use this application:\n# Mode 1 (Winter-Semester Internals Calculation):\nEnter marks scored in internals for current sem\nAs you finish input for each subject , a prediction will show for grade of current subject as well as the marks scored (outt of a possible 100).\nAfter typing the input for all the subjects , you will see the predicted gpa for the semester\nYou will be given an option as to whether you wish to calculate your new CGPA after adding the that has been predicted\nIf you wish to know your modified CGPA after the new additions , simply click on 1 and enter your past CGPA(up until your previous semester) as well as the number of credits your have finished so far.\nYou will now be able to see your modified CGPA.\n\n# Mode 2 (Calculate GPA for a semester):\n\nEnter the course credits followed by your predicted grade for the course\nReturns the GPA for the semester after you finish all the inputs.\nYou will be given an option as to whether you wish to calculate your new CGPA after adding the that has been predicted\nIf you wish to know your modified CGPA after the new additions , simply click on 1 and enter your past CGPA(up until your previous semester) as well as the number of credits your have finished so far.\nYou will now be able to see your modified CGPA.\n# Mode 3 (Calculate New CGPA):\n\nThis mode assumes that you have already calculated the GPA you are likely to receive in the current semester.\nEnter the number of credits finished , your current CGPA (Up until last semester) , number of credits taken this semester as well as your predicted cgpa for this semester.\nYou will see your modified CGPA.\n\n";
+void help()
+{
+    cout << "There are three modes in which you can use this application:\n# Mode 1 (Winter-Semester Internals Calculation):\nEnter marks scored in internals for current sem\nAs you finish input for each subject , a prediction will show for grade of current subject as well as the marks scored (outt of a possible 100).\nAfter typing the input for all the subjects , you will see the predicted gpa for the semester\nYou will be given an option as to whether you wish to calculate your new CGPA after adding the that has been predicted\nIf you wish to know your modified CGPA after the new additions , simply click on 1 and enter your past CGPA(up until your previous semester) as well as the number of credits your have finished so far.\nYou will now be able to see your modified CGPA.\n\n# Mode 2 (Calculate GPA for a semester):\n\nEnter the course credits followed by your predicted grade for the course\nReturns the GPA for the semester after you finish all the inputs.\nYou will be given an option as to whether you wish to calculate your new CGPA after adding the that has been predicted\nIf you wish to know your modified CGPA after the new additions , simply click on 1 and enter your past CGPA(up until your previous semester) as well as the number of credits your have finished so far.\nYou will now be able to see your modified CGPA.\n# Mode 3 (Calculate New CGPA):\n\nThis mode assumes that you have already calculated the GPA you are likely to receive in the current semester.\nEnter the number of credits finished , your current CGPA (Up until last semester) , number of credits taken this semester as well as your predicted cgpa for this semester.\nYou will see your modified CGPA.\n\n";
 }
 void calculate_cgpa()
 {
@@ -240,7 +241,7 @@ int calculate(int option)
         cin >> CAT1;
         cout << "Enter CAT2 Marks weightage (Out of 14): ";
         cin >> CAT2;
-        final_sum = ((pat1+pat2+pat3+pat4+CAT1+CAT2)/60)*100;
+        final_sum = ((pat1 + pat2 + pat3 + pat4 + CAT1 + CAT2) / 60) * 100;
         cout << "Final Score for this subject out of 100 is " << final_sum;
         return predict_grade_absolute(final_sum);
     }
@@ -318,78 +319,90 @@ int calculate(int option)
         cout << "Final Score for this subject out of 100 is " << final_sum;
         return predict_grade(final_sum);
     }
-    else{
-    cout<<"ERROR , WRONG VALUE ENTERED. RESTART AND TRY AGAIN";
-    exit(-1);
+    else
+    {
+        cout << "ERROR , WRONG VALUE ENTERED. RESTART AND TRY AGAIN";
+        exit(-1);
     }
 }
 
 void first_option()
 {
-    int number, option, credits_this_semester, credits, choice;
+    int number, option,choice,temp;
+    int credits=0;
     float gpa;
     cout << "Enter number of courses taken this semester: ";
     cin >> number;
-    cout << "Enter number of credits taken this semster: ";
-    cin >> credits_this_semester;
     for (int i = 1; i <= number; i++)
     {
     choice:
         cout << "\nEnter the type of course for course " << i << ":\n\n1) Theory Only (any no of credits) \n2) Theory + Lab (3 + 1 = 4 credits) \n3) Theory + Project (3 + 1 = 4 credits) \n4) TARP \n5) Theory + Lab + Project (2 + 1 + 1 = 4 credits)\n6) Soft Skills (1 credit)\n7) Theory + Project (1 + 1 = 2 credits)\n8) IIP (PHY1901) (1 credit)\n9) IIP (PHY1999) (2 credits)\n10) Theory + Project (2 + 1 = 3 Credits) \n11) Theory + Lab (2 + 1 = 3 Credits)\n12) OOPS\n";
         cout << endl;
         cin >> option;
-        cout << "Enter number of credits for this course: ";
-        cin >> credits;
         switch (option)
         {
         case 1:
-            gpa += (calculate(1) * credits);
+            cout << "Enter number of credits for this course: ";
+            cin >> temp;
+            gpa += (calculate(1) * temp);
+            credits+=temp;
             break;
         case 2:
-            gpa += (calculate(2) * credits);
+            gpa += (calculate(2) * 4);
+            credits+=4;
             break;
         case 3:
-            gpa += (calculate(3) * credits);
+            gpa += (calculate(3) * 4);
+            credits+=4;
             break;
         case 4:
-            gpa += (calculate(4) * credits);
+            gpa += (calculate(4) * 3);
+            credits+=3;
             break;
         case 5:
-            gpa += (calculate(5) * credits);
+            gpa += (calculate(5) * 4);
+            credits+=4;
             break;
         case 6:
-            gpa += (calculate(6) * credits);
+            gpa += (calculate(6) * 1);
+            credits+=1;
             break;
         case 7:
-            gpa += (calculate(7) * credits);
+            gpa += (calculate(7) * 2);
+            credits+=2;
             break;
         case 8:
-            gpa += (calculate(8) * credits);
+            gpa += (calculate(8) * 1);
+            credits+=1;
             break;
         case 9:
-            gpa += (calculate(9) * credits);
+            gpa += (calculate(9) * 2);
+            credits+=2;
             break;
         case 10:
-            gpa += (calculate(10) * credits);
+            gpa += (calculate(10) * 3);
+            credits+=3;
             break;
         case 11:
-            gpa += (calculate(11) * credits);
+            gpa += (calculate(11) * 3);
+            credits+=3;
             break;
         case 12:
-            gpa += (calculate(12) * credits);
+            gpa += (calculate(12) * 3);
+            credits+=3;
             break;
         default:
             cout << "Enter a valid option: " << endl;
             goto choice;
         }
     }
-    gpa = gpa / credits_this_semester;
+    gpa = gpa / credits;
     cout << "\nPredicted gpa is: " << gpa;
     cout << "\nDo you wish to calculate your new overall CGPA after adding this semester's GPA? 1-Yes 0-No: ";
     cin >> choice;
     if (choice == 1)
     {
-        calculate_cgpa(credits_this_semester, gpa);
+        calculate_cgpa(credits, gpa);
     }
 }
 
